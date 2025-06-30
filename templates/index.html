@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>人脸识别系统</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .container { max-width: 600px; margin: auto; }
+    img { max-width: 100%; height: auto; margin-top: 10px; }
+    .result { margin-top: 15px; font-weight: bold; }
+    form { margin-top: 20px; }
+    input[type="text"] { padding: 5px; width: 80%; }
+    input[type="submit"] { padding: 5px 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>人脸识别系统</h1>
+
+    <!-- 上传图片表单 -->
+    <form action="/" method="post" enctype="multipart/form-data">
+      <label for="file">选择图片上传：</label>
+      <input type="file" id="file" name="file" accept="image/*" required />
+      <input type="submit" value="上传识别" />
+    </form>
+
+    <!-- 显示上传后的图片 -->
+    {% if image %}
+      <img src="{{ image }}" alt="上传的图片" />
+    {% endif %}
+
+    <!-- 显示识别结果 -->
+    {% if result %}
+      <div class="result">{{ result }}</div>
+    {% endif %}
+
+    <!-- 如果需要输入新名字，显示表单 -->
+    {% if need_name %}
+      <form action="/" method="post">
+        <label for="new_name">请输入新用户名字：</label>
+        <input type="text" id="new_name" name="new_name" required />
+        <input type="submit" value="保存新用户" />
+      </form>
+    {% endif %}
+  </div>
+</body>
+</html>
