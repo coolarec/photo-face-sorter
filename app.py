@@ -163,7 +163,7 @@ def index():
                     conf = conf.item()
                     pred_idx = pred_idx.item()
 
-                if conf < 0.5:  # 置信度低，询问新名字
+                if conf < 0.3:  # 置信度低，询问新名字
                     result = "识别置信度低，请输入新名字"
                     need_name = True
                     temp_face_path = save_path
